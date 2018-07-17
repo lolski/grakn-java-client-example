@@ -10,7 +10,7 @@
             <outputDirectory>${file.separator}</outputDirectory>
             <directory>${basedir}</directory>
             <includes>
-                <include>sdgen</include>
+                <include>grakn-java-client-example</include>
             </includes>
             <fileMode>0755</fileMode>
         </fileSet>

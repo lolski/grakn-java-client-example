@@ -17,7 +17,7 @@ import static ai.grakn.graql.Graql.*;
 public class Main {
     public static void main(String[] args) {
         final String GRAKN_URI = "localhost:48555";
-        final String GRAKN_KEYSPACE = "grakn2";
+        final String GRAKN_KEYSPACE = "grakn";
         try (GraknSession session = RemoteGrakn.session(new SimpleURI(GRAKN_URI), Keyspace.of(GRAKN_KEYSPACE))) {
             System.out.println("defining the parent-child schema...");
             // define schema
