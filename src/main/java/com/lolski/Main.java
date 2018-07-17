@@ -21,7 +21,7 @@ public class Main {
         try (GraknSession session = RemoteGrakn.session(new SimpleURI(GRAKN_URI), Keyspace.of(GRAKN_KEYSPACE))) {
             System.out.println("defining the parent-child schema...");
             // define schema
-            define(session);
+            defineParentChildSchema(session);
 
             // define the parent, Johnny Sr.
             System.out.println("inserting parent...");
@@ -46,7 +46,7 @@ public class Main {
         }
     }
 
-    private static void define(GraknSession session) {
+    private static void defineParentChildSchema(GraknSession session) {
         try (GraknTx tx = session.open(GraknTxType.WRITE)) {
             tx.graql().define(
                     label("name").sub("attribute").datatype(AttributeType.DataType.STRING),
