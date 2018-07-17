@@ -7,7 +7,7 @@ This application shows how to work with Grakn using the [Java Client](http://dev
  4. perform [compute](http://dev.grakn.ai/docs/distributed-analytics/overview) count query on the data.
 
 ## Running
-NOTE: make sure you have run the Grakn database. If not, refer to the [Setup Guide](http://dev.grakn.ai/docs/get-started/setup-guide).
+NOTE: make sure you have the Grakn database up and running. If not, refer to the [Setup Guide](http://dev.grakn.ai/docs/get-started/setup-guide).
 ```
 $ mvn package
 $ cd target
