@@ -1,4 +1,4 @@
-package com.lolskillz;
+package com.lolski;
 
 import ai.grakn.GraknSession;
 import ai.grakn.GraknTx;
