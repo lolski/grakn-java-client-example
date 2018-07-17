@@ -54,7 +54,7 @@ public class Main {
                     label("child").sub("role"),
                     label("person").sub("entity").has("name").plays("parent").plays("child"),
                     label("parentchild").sub("relationship").relates("parent").relates("child")
-                ).execute();
+            ).execute();
             tx.commit();
         }
     }
