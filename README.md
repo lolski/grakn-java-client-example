@@ -3,7 +3,7 @@
 This application shows how to work with Grakn using the [Java Client](http://dev.grakn.ai/docs/get-started/setup-guide). It will demonstrate the following:
  1. how to [define a schema](http://dev.grakn.ai/docs/building-schema/defining-schema).
  2. how to [insert](http://dev.grakn.ai/docs/querying-data/insert-queries) entities, attributes, and relationships.
- 3. performing the [get query](http://dev.grakn.ai/docs/querying-data/get-queries)
+ 3. performing the [get query](http://dev.grakn.ai/docs/querying-data/get-queries).
  4. perform [aggregate](http://dev.grakn.ai/docs/querying-data/aggregate-queries) count query on the data.
  5. perform [compute](http://dev.grakn.ai/docs/distributed-analytics/overview) count query on the data.
 
@@ -13,6 +13,7 @@ NOTE: make sure you have the Grakn database up and running. If not, refer to the
 $ mvn package
 $ cd target
 $ tar -xf grakn-java-client-example-1.0-SNAPSHOT.tar.gz
+$ cd grakn-java-client-example-1.0-SNAPSHOT
 $ ./grakn-java-client-example
 
 defining the parent-child schema...
