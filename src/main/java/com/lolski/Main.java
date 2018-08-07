@@ -18,7 +18,7 @@ public class Main {
     public static void main(String[] args) {
         final String GRAKN_URI = "localhost:48555";
         final String GRAKN_KEYSPACE = "grakn14";
-        try (Grakn.Session session = Grakn.session(new SimpleURI(GRAKN_URI), Keyspace.of(GRAKN_KEYSPACE))) {
+        try (Grakn.Session session = new Grakn(new SimpleURI(GRAKN_URI)).session(Keyspace.of(GRAKN_KEYSPACE))) {
             System.out.println("defining the parent-child schema...");
             // define schema
             try (GraknTx tx = session.transaction(GraknTxType.WRITE)) {
