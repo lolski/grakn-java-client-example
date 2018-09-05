@@ -7,6 +7,7 @@ import ai.grakn.client.Grakn;
 import ai.grakn.concept.AttributeType;
 import ai.grakn.graql.Match;
 import ai.grakn.graql.answer.ConceptMap;
+import ai.grakn.graql.answer.Value;
 import ai.grakn.util.GraqlSyntax;
 import ai.grakn.util.SimpleURI;
 
@@ -17,7 +18,7 @@ import static ai.grakn.graql.Graql.*;
 public class Main {
     public static void main(String[] args) {
         final String GRAKN_URI = "localhost:48555";
-        final String GRAKN_KEYSPACE = "grakn14";
+        final String GRAKN_KEYSPACE = "grakn";
         try (Grakn.Session session = new Grakn(new SimpleURI(GRAKN_URI)).session(Keyspace.of(GRAKN_KEYSPACE))) {
             System.out.println("defining the parent-child schema...");
             // define schema
@@ -56,6 +57,26 @@ public class Main {
                             result.get("chld").id() + " name = \"Johnny Jr.\" via relationship " + result.get("prntchld").id());
                 }
 
+            }
+
+            // perform counting using the aggregate query
+            try (GraknTx tx = session.transaction(GraknTxType.WRITE)) {
+                System.out.print("performing count using match - aggregate count...");
+                final List<Value> countPersonResult = tx.graql().match(var("n").isa("person")).aggregate(count()).execute();
+                long person = countPersonResult.get(0).number().longValue();
+                final List<Value> countNameResult = tx.graql().match(var("n").isa("name")).aggregate(count()).execute();
+                long name = countNameResult.get(0).number().longValue();
+                System.out.println("person instance count = " + person + ", name instance count = " + name);
+            }
+
+            // perform counting using the compute query (see the doc on analytics for when to use compute count vs aggregate count)
+            try (GraknTx tx = session.transaction(GraknTxType.WRITE)) {
+                System.out.print("performing count using compute count...");
+                final List<Value> countPersonResult = tx.graql().compute(GraqlSyntax.Compute.Method.COUNT).in("person").execute();
+                long person = countPersonResult.get(0).number().longValue();
+                final List<Value> countNameResult = tx.graql().compute(GraqlSyntax.Compute.Method.COUNT).in("name").execute();
+                long name = countNameResult.get(0).number().longValue();
+                System.out.println("person instance count = " + person + ", name instance count = " + name);
             }
         }
     }
