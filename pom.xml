@@ -43,11 +43,11 @@
 
     <repositories>
         <repository>
-            <id>snapshots</id>
+            <id>mavengraknai</id>
             <url>http://maven.grakn.ai/nexus/content/repositories/snapshots/</url>
         </repository>
         <repository>
-            <id>releases</id>
+            <id>oss-sonatype</id>
             <url>https://oss.sonatype.org/content/repositories/releases</url>
         </repository>
     </repositories>
@@ -56,7 +56,7 @@
         <dependency>
             <groupId>ai.grakn</groupId>
             <artifactId>client-java</artifactId>
-            <version>1.3.0</version>
+            <version>1.4.2</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.slf4j</groupId>
